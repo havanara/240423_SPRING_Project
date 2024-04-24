@@ -19,5 +19,5 @@ writer varchar(200),
 content text,
 isDel varchar(10) default 'N',
 reg_date datetime default now(),
-read_count int,
+read_count int default 0,
 primary key(bno));

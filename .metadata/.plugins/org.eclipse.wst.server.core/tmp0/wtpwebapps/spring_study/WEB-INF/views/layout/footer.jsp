@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<div>
+<div class="container-md">
 	2024 Spring Project
 </div>
 

@@ -1,4 +1,6 @@
 INDEX VERSION 1.131
+D:\nara\_spring_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2294440254.index
+\spring_study\src\main\java
 D:\nara\_spring_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\322123312.index
 \spring_study\src\main\java
 D:\nara\_spring_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3020021709.index
