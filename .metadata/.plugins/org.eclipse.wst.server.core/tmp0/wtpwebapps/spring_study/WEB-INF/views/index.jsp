@@ -3,9 +3,26 @@
 
 <jsp:include page="layout/header.jsp"></jsp:include>
 
-<h1>
-	My First Spring Project 
-</h1>
+<div class="container-md">
+	<h1>My First Spring Project </h1> <br>
+	<c:if test="${ses.id ne null }">
+		<p>${ses.id } 님이 로그인 하셨습니다. <br>
+			<span class="badge text-bg-info">${ses.last_login }</span>
+		</p>
+	</c:if>
+</div>
+<br>
+
+<script type="text/javascript">
+	const msg_login = `<c:out value = "${msg_login}" />`;
+	if(msg_login === "1"){
+		alert("로그인에 실패하였습니다.");
+	}
+	const msg_logout = `<c:out value = "${msg_logout}" />`;
+	if(msg_logout === "1"){
+		alert("로그아웃 되었습니다.");
+	}
+</script>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>
 

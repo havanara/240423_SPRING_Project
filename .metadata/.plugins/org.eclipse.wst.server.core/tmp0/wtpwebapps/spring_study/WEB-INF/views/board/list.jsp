@@ -6,18 +6,27 @@
 
 <div class="container-md">
 	<h1>Board List Page</h1>
+	<span>총 게시글 수 : ${ph.totalCount }</span>
 	
 	<!-- 검색 라인 -->
-	<form action="">
+	<form action="/board/list" method="get" class="row g-3">
 		<div class="input-group mb-3" style="width: 500px;">
-			<select class="form-select" aria-label="Default select example">
-			  <option selected>Choose...</option>
-			  <option value="title">title</option>
-			  <option value="writer">writer</option>
-			  <option value="content">content</option>
+			<select class="form-select" name="type" aria-label="Default select example">
+			<!-- == 처리해도 되고 eq 처리해도 됨 둘다 같으면 이라는 같은 의미 -->
+			  <option ${ph.pgvo.type == null? 'selected' : ''} selected>Choose...</option>
+			  <option value="t" ${ph.pgvo.type eq 't'? 'selected' : ''}>title</option>
+			  <option value="w" ${ph.pgvo.type eq 'w'? 'selected' : ''}>writer</option>
+			  <option value="c" ${ph.pgvo.type eq 'c'? 'selected' : ''}>content</option>
+			  <option value="tc" ${ph.pgvo.type eq 'tc'? 'selected' : ''}>title&content</option>
+			  <option value="wc" ${ph.pgvo.type eq 'wc'? 'selected' : ''}>writer&content</option>
+			  <option value="tw" ${ph.pgvo.type eq 'tw'? 'selected' : ''}>title&writer</option>
+			  <option value="twc" ${ph.pgvo.type eq 'twc'? 'selected' : ''}>all</option>
 			</select>
-			<input class="form-control" type="text" placeholder="search" aria-label="default input example">
-			<button type="button" class="btn btn-success">검색</button>
+			<input class="form-control" name="keyword" type="text" value="${ph.pgvo.keyword }"
+			placeholder="search" aria-label="default input example">
+			<input type="hidden" name="pageNo" value="1">
+			<input type="hidden" name="qty" value="10">
+			<button type="submit" class="btn btn-success">검색</button>
 		</div>
 	</form>
 	
@@ -47,17 +56,24 @@
 	<!-- 페이지네이션 라인 -->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
-			<li class="page-item disabled">
-				<a class="page-link">이전</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item active" aria-current="page">
-				<a class="page-link" href="#">2</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-				<a class="page-link" href="#">다음</a>
-			</li>
+			<c:if test="${ph.prev }">
+				<li class="page-item">
+					<a class="page-link" href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}
+					&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">이전</a>
+				</li>
+			</c:if>
+			
+			<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+				<li class="page-item"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}
+				&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
+			</c:forEach>
+			
+			<c:if test="${ph.next }">
+				<li class="page-item">
+					<a class="page-link" href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}
+					&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">다음</a>
+				</li>
+			</c:if>
 		</ul>
 	</nav>
 </div>

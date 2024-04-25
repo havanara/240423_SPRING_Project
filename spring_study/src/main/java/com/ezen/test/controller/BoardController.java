@@ -1,5 +1,7 @@
 package com.ezen.test.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.PagingVO;
+import com.ezen.test.handler.PagingHandler;
 import com.ezen.test.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,11 +41,20 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model m) {
+	public String list(Model m, PagingVO pgvo) { //PagingVO 파라미터가 없으면(객체가 없을수도 있잖아) 기본생성자 값이 뜸
+		log.info(">> pgvo >> {} ", pgvo);
+
 		//리턴 타입은 목적지 경로에 대한 타입(destPage가 리턴이라고 생각하면 됨)
 		//Model 객체 -> request.setAttribute 역할을 하는 객체(데이터를 jsp로 가져가는 역할)
-		List<BoardVO> list = bsv.getList();
+		List<BoardVO> list = bsv.getList(pgvo);
+		
+		int totalCount = bsv.getTotal(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		log.info(">> ph >> {} ", ph);
+		
 		m.addAttribute("list", list);
+		m.addAttribute("ph", ph);
+
 		return "/board/list";
 	}
 	
