@@ -99,7 +99,8 @@
 #### 📅 240426
 * [x] member(회원) 마이페이지 회원탈퇴
 * [x] member(회원) 댓글(비동기) 작성, 수정, 삭제
-
+* [x] member(회원) 내 게시글, 내 댓글만 수정, 삭제
+      
 ---
 
 ### 회원탈퇴
@@ -114,4 +115,10 @@
 
 ![댓글 수정](https://github.com/havanara/havanara/assets/166004719/526adcba-586d-4ac1-ab10-9f265711178b)
 
-![댓글 삭제](https://github.com/havanara/240423_SPRING_Project/assets/166004719/34f2fca6-9584-4446-bfff-40c86170553b)
+---
+
+### 내 게시글, 내 댓글만 수정, 삭제
+
+![게시글(수정,삭제)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/2fdb389e-e71a-432b-a859-1e3b147978ed)
+
+![댓글(수정,삭제)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/47f5909b-f4d1-40b6-acb3-d1d1c3420868)
