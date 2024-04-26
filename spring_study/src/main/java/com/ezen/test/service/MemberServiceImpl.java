@@ -92,4 +92,10 @@ public class MemberServiceImpl implements MemberService{
 		
 		mdao.update(mvo);
 	}
+
+	@Override
+	public void delete(String id) {
+		mdao.delete(id);
+		
+	}
 }

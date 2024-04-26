@@ -24,4 +24,8 @@
   	where id = #{id}
   </update>
   
+  <delete id="delete">
+  	delete from member where id = #{id}
+  </delete>
+  
   </mapper>

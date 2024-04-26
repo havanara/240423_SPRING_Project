@@ -22,6 +22,10 @@
 	if(msg_logout === "1"){
 		alert("로그아웃 되었습니다.");
 	}
+	const msg_delete = `<c:out value = "${msg_delete}" />`;
+	if(msg_delete === "1"){
+		alert("탈퇴처리가 완료 되었습니다.");
+	}
 </script>
 
 <jsp:include page="layout/footer.jsp"></jsp:include>

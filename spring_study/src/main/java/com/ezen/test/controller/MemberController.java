@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.test.domain.MemberVO;
 import com.ezen.test.service.MemberService;
@@ -81,4 +82,24 @@ public class MemberController {
 		return "redirect:/member/logout";
 	}
 	
+	@GetMapping("/delete")
+	public String delete(HttpServletRequest request, RedirectAttributes re) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("ses");
+		msv.delete(mvo.getId());
+		
+		re.addFlashAttribute("msg_delete", "1"); //flash는 일회성
+		return "redirect:/member/logout"; //logout 페이지로 간다는게 아니라 logout 케이스로 간다는 것
+	}
+	
+//	자주 쓰는 method 는 아래처럼 만들어서 메서드 안에서 사용(private로 작성하면 MemberController 내에서만 사용 가능
+//	private String getId(HttpServletRequest request) {
+//		MemberVO mvo = (MemberVO)request.getSession().getAttribute("ses");
+//		return mvo.getId();
+//	}
+	
+//	msv.delete(getId(request)); 로 위의 메서드 사용 가능(쓸때마다 3~4줄 쓸 필요없이 사용 가능)
+	
+	//form 태그 안에 method="post" 처리 하지 않은 이상 getmapping 처리
+	//jsp에서 보내는 모든 경로는 컨트롤러로 감
+	//컨트롤러에서 보내는 경로는 전부 jsp로 감(redirect 제외)
 }

@@ -12,4 +12,6 @@ public interface MemberDAO {
 
 	void update(MemberVO mvo);
 
+	void delete(String id);
+
 }
