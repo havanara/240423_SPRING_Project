@@ -122,3 +122,16 @@
 ![게시글(수정,삭제)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/2fdb389e-e71a-432b-a859-1e3b147978ed)
 
 ![댓글(수정,삭제)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/47f5909b-f4d1-40b6-acb3-d1d1c3420868)
+
+---
+
+#### 📅 240429
+* [x] file(파일) 파일 업로드(이미지만 가능, DB 저장)
+
+---
+
+### 파일 업로드
+
+![파일업로드1](https://github.com/havanara/240423_SPRING_Project/assets/166004719/16722583-d233-4f2f-87d4-a635ff39ada3)
+
+![파일업로드2](https://github.com/havanara/240423_SPRING_Project/assets/166004719/b298735f-a77d-4440-8ee0-7259ae960f6c)
