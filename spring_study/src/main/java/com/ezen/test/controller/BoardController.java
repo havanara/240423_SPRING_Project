@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.ezen.test.domain.BoardDTO;
 import com.ezen.test.domain.BoardVO;
+import com.ezen.test.domain.FileVO;
 import com.ezen.test.domain.PagingVO;
+import com.ezen.test.handler.FileHandelr;
 import com.ezen.test.handler.PagingHandler;
 import com.ezen.test.service.BoardService;
 
@@ -26,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
 	
 	private final BoardService bsv;
+	private final FileHandelr fhd;
 	
 	@GetMapping("/register")
 	public String register() {
@@ -33,10 +38,25 @@ public class BoardController {
 	}
 	
 	//@RequestParam("name") String name : 파라미터를 받을 때
+	//required : 필수여부 false : 파라미터가 없어도 예외가 발생하지 않음
 	@PostMapping("/insert")
-	public String insert(BoardVO bvo) {
+	public String insert(BoardVO bvo, @RequestParam(name="files", required = false)MultipartFile[] files) {
 		log.info(">> bvo >> {}", bvo);
-		int isOK = bsv.insert(bvo);
+		log.info(">> files >> {}", files);
+		//파일 핸들러 처리
+		//파일 저장처리한 다음에 fileList를 리턴
+		List<FileVO> flist = null;
+		
+		//파일이 있을 경우에만 핸들러 호출
+		if(files[0].getSize() > 0) {
+			//핸들러 호출
+			flist = fhd.uploadFiles(files);
+			log.info(">> flist >> {}", flist);
+		}
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		int isOK = bsv.insert(bdto);
+		
+//		int isOK = bsv.insert(bvo);
 		return "redirect:/board/list";
 	}
 	
@@ -64,8 +84,11 @@ public class BoardController {
 	@GetMapping({"/detail","/modify"})
 	public void detail(Model m, @RequestParam("bno") int bno) {
 		log.info(">> bno >> {}", bno);
-		BoardVO bvo = bsv.getDetail(bno);
-		m.addAttribute("bvo", bvo);
+//		BoardVO bvo = bsv.getDetail(bno);
+		BoardDTO bdto = bsv.getDetail(bno);
+		log.info(">> bdto >> {}", bdto);
+//		m.addAttribute("bvo", bvo);
+		m.addAttribute("bdto", bdto);
 	}
 	
 	@PostMapping("modify")

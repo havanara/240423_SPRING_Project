@@ -1,0 +1,21 @@
+package com.ezen.test.handler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ezen.test.domain.FileVO;
+
+public class FileHandelr {
+	
+	//실제 파일이 저장되는 경로
+	private final String UP_DIR = "D:\\_myProject\\_java\\_fileUpload";
+
+	public List<FileVO> uploadFiles(MultipartFile[] files) {
+		// 리턴 객체 생성
+		List<FileVO> flist = new ArrayList<FileVO>(); //내가 직접 생성할 때는 그냥 List말고 ArrayList로 생성해야함
+		return null;
+	}
+
+}

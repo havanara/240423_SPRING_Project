@@ -44,6 +44,10 @@
   	<include refid="search"></include>
   </select>
   
+  <select id="selectBno" resultType="int">
+  	select max(bno) from board;
+  </select>
+  
   <!-- select * from board where isDel = 'N' and title like %keyword% or content like %keyword% -->
   <!-- select * from board where isDel = 'N' and ( ... or ... or ... ) -->
   <!-- ... or ... or ... <- 부분이 있을수도 있고 없을수도 있는 동적 값 -->
