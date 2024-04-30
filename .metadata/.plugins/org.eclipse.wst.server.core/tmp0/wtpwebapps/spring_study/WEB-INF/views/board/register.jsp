@@ -29,9 +29,7 @@
 		</div>
 		
 		<!-- 파일 목록 표시라인 -->
-		<div class="mb-3" id="fileZone">
-		  
-		</div>
+		<div class="mb-3" id="fileZone"></div>
 		
 		<button type="submit" class="btn btn-primary" id="regBtn">등록</button>
 	</form>

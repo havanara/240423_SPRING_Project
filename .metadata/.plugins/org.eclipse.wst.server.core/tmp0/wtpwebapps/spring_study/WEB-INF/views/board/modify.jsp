@@ -7,7 +7,7 @@
 <div class="container-md">
 <h1>Board Modify Page</h1>
 <c:set value="${bdto.bvo }" var="bvo"></c:set> 
-<form action="/board/modify" method="post">
+<form action="/board/modify" method="post" enctype="multipart/form-data">
 	<div class="mb-3">
 	  <label for="n" class="form-label">bno</label>
 	  <input type="text" class="form-control" name="bno" id="n" value="${bvo.bno }" readonly="readonly" placeholder="Bno...">
@@ -28,15 +28,8 @@
 	  <label for="c" class="form-label">content</label>
 	  <textarea class="form-control" name="content" id="c" aria-label="With textarea">${bvo.content }</textarea>
 	</div>
-	
-	<c:set value="${bdto.flist }" var="flist"></c:set> 
 		
-	<div class="mb-3">
-	<label for="f" class="form-label">file</label>
-	<input type="file" class="form-control" name="flist" id="f" value="${file }">
-	<ul class="list-group list-group-flush">
-	</div>
-		
+	<!-- 파일 표시 -->
 	<c:set value="${bdto.flist }" var="flist"></c:set> 
 	<div class="mb-3">
 		<ul class="list-group list-group-flush">
@@ -62,6 +55,7 @@
 	  					<div>${fvo.file_name }</div>
 	  					${fvo.reg_date }
 	  					<span class="badge rounded-pill text-bg-dark">${fvo.file_size }Byte</span>
+	  					<button type="button" data-uuid="${fvo.uuid }" class="btn btn-outline-danger btn-sm file-x" >X</button>
 	  				</div>
 				</li>
 			</c:forEach>
@@ -69,12 +63,24 @@
 	</div>
 	<br> <hr>
 	
-	<button type="submit" class="btn btn-warning">수정</button>
+	<!-- 파일 입력 라인 추가 -->
+	<div class="mb-3">
+	  <label for="file" class="form-label">files...</label>
+	  <!-- multiple -> input 한개에 여러개의 값을 넣을 수 있음 -->
+	  <input type="file" class="form-control" name="files" id="file" multiple="multiple" style="display: none"><br>
+	  <button type="button" class="btn btn-outline-success" id="trigger">FileUpload...</button>
+	</div>
+	
+	<!-- 파일 목록 표시라인 -->
+	<div class="mb-3" id="fileZone"></div>
+	
+	<button type="submit" class="btn btn-warning" id="regBtn">수정</button>
 	<a href="/board/list"><button type="button" class="btn btn-primary">list</button></a>
 </form>
 </div>
 
 <script type="text/javascript" src="/resources/js/boardModify.js"></script>
+<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
 
 <jsp:include page="../layout/footer.jsp" />
 

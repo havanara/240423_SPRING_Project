@@ -7,8 +7,8 @@
   
   <!-- parameterType 생략 가능 -->
   <insert id="insert" parameterType="com.ezen.test.domain.BoardVO">
-  	insert into board(title, writer, content)
-  	values (#{title}, #{writer}, #{content})
+  	insert into board(title, writer, content, has_file)
+  	values (#{title}, #{writer}, #{content}, #{has_file})
   </insert>
   
   <select id="getList" resultType="com.ezen.test.domain.BoardVO">
@@ -26,7 +26,8 @@
   	update board set
 	title = #{title},
 	content = #{content},
-	read_count = read_count-2
+	read_count = read_count-2,
+	has_file = #{has_file}
 	where
 	bno = #{bno}
   </update>
@@ -47,6 +48,20 @@
   <select id="selectBno" resultType="int">
   	select max(bno) from board;
   </select>
+  
+  <update id="cmtCountUpdate">
+  	update board
+	set cmt_qty = (
+	select count(bno) from comment
+	where bno = board.bno);
+  </update>
+  
+  <update id="fileCountUpdate">
+	update board
+	set has_file = (
+	select count(bno) from file
+	where bno = board.bno);
+  </update>
   
   <!-- select * from board where isDel = 'N' and title like %keyword% or content like %keyword% -->
   <!-- select * from board where isDel = 'N' and ( ... or ... or ... ) -->

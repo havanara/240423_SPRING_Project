@@ -55,3 +55,20 @@ file_size int,
 bno int,
 reg_date datetime default now(),
 primary key(uuid));
+
+-- 2024-04-30
+-- 댓글 수와 파일 수 칼럼 추가
+alter table board add cmt_qty int default 0;
+alter table board add has_file int default 0;
+
+-- bno가 일치하는 comment의 count를 세어서 cmt_qty 업데이트
+update board
+set cmt_qty = (
+select count(bno) from comment
+where bno = board.bno);
+
+-- bno가 일치하는 file의 count를 세어서 has_file 업데이트
+update board
+set has_file = (
+select count(bno) from file
+where bno = board.bno);
