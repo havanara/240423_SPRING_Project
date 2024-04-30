@@ -135,3 +135,29 @@
 ![파일업로드1](https://github.com/havanara/240423_SPRING_Project/assets/166004719/16722583-d233-4f2f-87d4-a635ff39ada3)
 
 ![파일업로드2](https://github.com/havanara/240423_SPRING_Project/assets/166004719/b298735f-a77d-4440-8ee0-7259ae960f6c)
+
+---
+
+#### 📅 240430
+* [x] file(파일) 파일 수정, 삭제
+* [x] board(게시판) 댓글, 파일 개수 리스트에 표시(추가 및 삭제 시 반영)
+
+---
+
+### 파일 수정, 삭제
+
+![파일 수정(추가)1](https://github.com/havanara/240423_SPRING_Project/assets/166004719/232ea406-6c03-4e16-8eda-eb947ffe4a2b)
+
+![파일 수정(추가)2](https://github.com/havanara/240423_SPRING_Project/assets/166004719/cf945d27-b659-40ef-a9ad-1688c013643e)
+
+![파일 수정(추가)3](https://github.com/havanara/240423_SPRING_Project/assets/166004719/bf45d490-0a34-4ef3-a655-e98e126e4105)
+
+![파일 삭제1](https://github.com/havanara/240423_SPRING_Project/assets/166004719/c139711d-1c92-4fa4-9b14-65e7adfcd00c)
+
+![파일 삭제2](https://github.com/havanara/240423_SPRING_Project/assets/166004719/21b8e1e5-d985-445e-ae07-1d55b1b31a43)
+
+---
+
+### 댓글, 파일 개수 표시
+
+![댓글 파일 개수](https://github.com/havanara/240423_SPRING_Project/assets/166004719/5e885cdf-2007-4b1f-9014-f60c171cbcff)
