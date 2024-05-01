@@ -1,0 +1,41 @@
+package com.ezen.www.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ezen.www.domain.BoardVO;
+import com.ezen.www.service.BoardService;
+
+import ch.qos.logback.core.model.Model;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@RequestMapping("/board/*")
+@Slf4j
+@RequiredArgsConstructor
+@Controller
+public class BoardController {
+	private final BoardService bsv;
+	
+	@GetMapping("/register")
+	public void register() {
+	}
+	
+	@PostMapping("/insert")
+	public String insert(BoardVO bvo) {
+		log.info(">> bvo >> {} ", bvo);
+		int isOK = bsv.insert(bvo);
+		return "index";
+	}
+	
+	@GetMapping("/list")
+	public String list(Model m, BoardVO bvo) {
+		log.info(">> bvo >> {} ", bvo);
+		List<BoardVO> list = bsv.getList(bvo);
+		m.addAttribute("list", list);
+		return "/board/list";
+	}
+	
+}

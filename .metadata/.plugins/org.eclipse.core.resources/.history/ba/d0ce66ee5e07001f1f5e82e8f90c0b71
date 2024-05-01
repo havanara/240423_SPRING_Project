@@ -1,0 +1,35 @@
+package com.ezen.www.config;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.zaxxer.hikari.HikariConfig;
+
+@MapperScan(basePackages = {"com.ezen.www.repository"})
+@Configuration
+public class RootConfig {
+
+	@Autowired //bean으로 인지 / 객체 생성해서 쓸 수 있게
+	ApplicationContext applicationContext;
+	
+	@Bean
+	public DataSource dataSoruce() {
+		HikariConfig hikariConfig = new HikariConfig();
+		//log4jdbc -> DB의 로그를 찍을 수 있는 드라이버로 설정 변경
+		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springtest");
+		
+	}
+	
+	@Bean
+	public SqlSessionFactory sqlSessionFactory() {
+		SqlSessionFactoryBean sqlFactoryBean = new SqlSessionFactoryBean();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+	}
+}

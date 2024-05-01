@@ -1,0 +1,11 @@
+package com.ezen.www.service;
+
+import com.ezen.www.domain.BoardVO;
+
+public interface BoardService {
+
+	int insert(BoardVO bvo);
+
+	int list(BoardVO bvo);
+
+}

@@ -1,0 +1,10 @@
+package com.ezen.www.config;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Configuration;
+
+@MapperScan(basePackages = {"com.ezen.www.repository"})
+@Configuration
+public class RootConfig {
+
+}
