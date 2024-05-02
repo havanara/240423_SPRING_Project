@@ -1,0 +1,20 @@
+package com.ezen.www.repository;
+
+import java.util.List;
+
+import com.ezen.www.domain.CommentVO;
+import com.ezen.www.domain.PagingVO;
+
+public interface CommentDAO {
+
+	int post(CommentVO cvo);
+
+	int insert(CommentVO cvo);
+
+//	List<CommentVO> getList(int bno);
+
+	List<CommentVO> getList(int bno, PagingVO pgvo);
+
+	int getSelectOneBnoTotalCount(int bno);
+
+}

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.BoardVO;
+import com.ezen.www.domain.PagingVO;
+import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,13 +37,22 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model m) {
-		List<BoardVO> list = bsv.getList();
-		//가져온 리스트 -> /board/list.jsp로 전달
+	public String list(Model m, PagingVO pgvo) {
+		log.info(">> pagingVO >> {} ", pgvo);
 		
-		m.addAttribute("list", list);
+		//페이징 처리 추가
+		List<BoardVO> list = bsv.getList(pgvo);
+//		List<BoardVO> list = bsv.getList();
+		
+		//totalCount 구해오기
+		int totalCount = bsv.getTotal(pgvo);
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		
+		//가져온 리스트 -> /board/list.jsp로 전달
+		m.addAttribute("list", list); //Model m은 jsp로 보내는것
+		m.addAttribute("ph", ph);
 
-		return "/board/list";
+		return "/board/list"; //어디로 보내는지
 	}
 	
 	@GetMapping({"/detail","/modify"})

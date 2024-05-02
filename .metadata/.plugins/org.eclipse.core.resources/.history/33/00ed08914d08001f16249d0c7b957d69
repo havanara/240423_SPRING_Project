@@ -1,0 +1,50 @@
+console.log("comment js in")
+
+//cmtAddBtn 버튼 클릭 시 bno, writer, content를 비동기로 DB에 넣기
+
+document.getElementById('cmtAddBtn').addEventListener('click',=>(){
+    // value : input, checkbox, option...
+    // innertext : div, span...
+    const cmtText = document.getElementById('cmtText').value;
+    const cmtWriter = document.getElementById('cmtWriter').innerHTML;
+
+    if(cmtText == '' || cmtText == null){
+        alert("댓글을 입력해주세요.");
+        document.getElementById('cmtText').focus();
+        return false;
+    }else{
+        let cmtData = {
+            bno : bnoVal,
+            writer : cmtWriter,
+            content : cmtText
+        }
+        console.log(cmtData);
+
+        postCommentToServer(cmtText).then(result => {
+            console.log(result);
+            if(result == '1'){
+                alert("댓글이 등록되었습니다.");
+                document.getElementById('cmtText').value = "";
+            }
+        })
+    }
+});
+
+async function postCommentToServer(cmtText){
+    try {
+        const url = "/comment/post";
+        const config = {
+            method : "post",
+            headers : {
+                "content-type" : "application/json; charset=utf-8"
+            },
+            body : JSON.stringify(cmtData)
+        };
+
+        const resp = await fetch(url,config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}

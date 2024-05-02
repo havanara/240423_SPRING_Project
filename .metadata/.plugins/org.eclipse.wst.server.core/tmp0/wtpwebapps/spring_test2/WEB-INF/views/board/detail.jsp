@@ -65,14 +65,49 @@
 	
 	<!-- 댓글 라인 -->
 	<!-- 댓글 등록 라인 -->
-<%-- 	<div class="input-group mb-3">
-	  <span class="input-group-text" id="cmtWriter">${ses.id }</span>
+ 	<div class="input-group mb-3">
+	  <span class="input-group-text" id="cmtWriter">Tester</span>
 	  <input type="text" id="cmtText" class="form-control" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">
 	  <button type="button" id="cmtAddBtn" class="btn btn-secondary">등록</button>
 	</div>
 		
 	<!-- 댓글 출력 라인 -->	
-	<div class="accordion" id="accordionExample">
+	<ul class="list-group list-group-flush" id="cmtListArea">
+  		<li class="list-group-item">
+  			 <div class="input-group mb-3">
+  			 	<div class="fw-bold">${cvo.writer }</div>
+  			 	${cvo.content }
+  			 </div>
+  			 <span class="badge rounded-pill text-bg-warning">regDate</span>
+  		</li>
+	</ul>
+	
+	<!-- 댓글 더보기 버튼 -->
+	<div>
+		<button type="button" id="moreBtn" data-page="1" class="btn btn-outline-dark" style="visibility: hidden;">More +</button>
+	</div>
+	
+	<!-- 모달창 라인 -->
+	<div class="modal" id="myModal" tabindex="-1">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Writer</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      	<input type="text" class="form-control" id="cmtTextMod">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-primary" id="cmtModBtn">수정</button>
+		      </div>
+	    	</div>
+  		</div>
+	</div>
+	
+	<!-- 댓글 출력 아코디언 방식 -->
+<!-- 	<div class="accordion" id="accordionExample">
 	
 	  <div class="accordion-item">
 	    <h2 class="accordion-header">
@@ -87,7 +122,7 @@
 	    </div>
 	  </div>
 	  
-	</div> --%>
+	</div> -->
 	<br> <hr>
 	
 	<%-- <c:if test="${ses.id eq bvo.writer}"> --%>
@@ -98,17 +133,17 @@
 	<br><br><br><br><br>
 </div>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	const bnoVal = `<c:out value = "${bvo.bno}" />`;
-	const id = `<c:out value = "${ses.id}" />`;
+/* 	const id = `<c:out value = "${ses.id}" />`; */
 	console.log(bnoVal);
 </script>
 
-<script type="text/javascript" src="/resources/js/boardDetailComment.js"></script>
+<script type="text/javascript" src="/re/js/boardDetailComment.js"></script>
 
 <script type="text/javascript">
-	spreadCommentList(bnoVal);
-</script> -->
+spreadCommentList(bnoVal);
+</script>
 
 <jsp:include page="../layout/footer.jsp" />
 
