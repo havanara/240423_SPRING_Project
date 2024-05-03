@@ -14,4 +14,8 @@ public interface CommentService {
 
 	PagingHandler getList(int bno, PagingVO pgvo);
 
+	int modify(CommentVO cvo);
+
+	int delete(int cno);
+
 }

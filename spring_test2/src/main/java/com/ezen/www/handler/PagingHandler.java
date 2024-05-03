@@ -27,6 +27,7 @@ public class PagingHandler {
 	private List<CommentVO> cmtList;
 	
 	//생성자에서 모든 값들이 계산되어 설정되어야 하기 때문에 생성자 import는 하지 않고 따로 만듦
+	//리스트용
 	public PagingHandler(PagingVO pgvo, int totalCount) {
 		this.pgvo = pgvo;
 		this.totalCount = totalCount;
@@ -54,6 +55,7 @@ public class PagingHandler {
 		this.next = this.endPage < this.realEndPage;
 	}
 	
+	//댓글용
 	public PagingHandler(PagingVO pgvo, int totalCount, List<CommentVO>cmtList) {
 		this(pgvo, totalCount);
 		this.cmtList = cmtList;

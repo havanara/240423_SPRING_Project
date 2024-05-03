@@ -3,6 +3,7 @@ console.log("comment js in")
 //cmtAddBtn 버튼 클릭 시 bno, writer, content를 비동기로 DB에 넣기
 
 document.getElementById('cmtAddBtn').addEventListener('click',()=>{
+
     // value : input, checkbox, option...
     // innertext : div, span...
     const cmtText = document.getElementById('cmtText').value;
@@ -81,7 +82,7 @@ async function getCommentListFromServer(bno, page){
 //         console.log(error);
 //     }
 // }
-function spreadCommentList(bno, page=1){
+function spreadCommentList(bno, page=1){ //들어오는 page의 매개변수가 없으면 에러를 내지말고 1로 처리해줘
     getCommentListFromServer(bno, page).then(result => {
         console.log(result);
         //댓글 뿌리기
@@ -90,11 +91,11 @@ function spreadCommentList(bno, page=1){
             if(page == 1){
                 ul.innerHTML = '';
             }
-            for(let i=0; i<result.cmtList.length; i++){ //for(let cvo of result) 처리해도 됨
+            for(let i=0; i<result.cmtList.length; i++){ //for(let cvo of result.cmtList) 처리해도 됨
                 let add = `<ul class="list-group list-group-flush" id="cmtListArea">`;
-                add += `<li class="list-group-item">`;
-                add += `<div class="input-group mb-3"> no. ${result.cmtList[i].cno} | `;
-                add += `<div class="fw-bold">${result.cmtList[i].writer }</div><br>`;
+                add += `<li class="list-group-item" data-cno="${result.cmtList[i].cno}">`;
+                add += `<div class="mb-3"> no. ${result.cmtList[i].cno}`;
+                add += `<div class="fw-bold">${result.cmtList[i].writer }</div>`;
                 add += `${result.cmtList[i].content }`;
                 add += `</div>`;
                 add += `<span class="badge rounded-pill text-bg-warning">${result.cmtList[i].regDate}</span>`;
@@ -109,6 +110,16 @@ function spreadCommentList(bno, page=1){
             console.log(moreBtn);
             
             //moreBtn이 표시되는 조건
+            //ex)pgvo.pageNo = 1 / realEndPage = 3
+            //realEndPage보다 현재 내 페이지가 작으면 표시
+            if(result.pgvo.pageNo < result.realEndPage){
+                // style = "visivility:hidden"(숨김) -> visivility:visible(표시)
+                moreBtn.style.visibility = 'visible'; //버튼 표시
+                moreBtn.dataset.page = page+1; //1페이지 늘림
+            }else{
+                moreBtn.style.visibility = 'hidden'; //pgvo.pageNo > realEndPage 이라면 숨김
+            }
+
         }else{
             ul.innerHTML = `<li class="list-group-item">댓글이 없습니다.</li>`;
         }
@@ -120,8 +131,88 @@ document.addEventListener('click',(e)=>{
         let page = parseInt(e.target.dataset.page);
         spreadCommentList(bnoVal,page);
     }
+    //수정 시 모달창을 통해 댓글 입력받기
+    else if(e.target.classList.contains('mod')){
+        //내가 수정 버튼을 누른 댓글의 li
+        let li = e.target.closest('li');
+        //nextSibling : 한 부모안에서 다음 형제를 찾기
+        let cmtText = li.querySelector('.fw-bold').nextSibling;
+        console.log(cmtText);
+        document.getElementById('cmtTextMod').value = cmtText.nodeValue;
+
+        //수정 -> cno dataset으로 달기 cno, content
+        document.getElementById('cmtModBtn').setAttribute("data-cno", li.dataset.cno);
+    }
+    else if(e.target.id == 'cmtModBtn'){
+        let cmtModData = {
+            cno : e.target.dataset.cno,
+            content : document.getElementById('cmtTextMod').value
+        };
+        console.log(cmtModData);
+
+        //비동기로 보내기
+        updateCommentToServer(cmtModData).then(result => {
+            console.log(result);
+            if(result == '1'){
+                alert("댓글이 수정되었습니다.");
+                document.querySelector(".btn-close").click();
+            }else{
+                alert("댓글 수정이 실패되었습니다.");
+                document.querySelector('.btn-close').click();
+            }
+            //화면에 뿌리기
+            spreadCommentList(bnoVal);
+        });   
+    }
+    else if(e.target.classList.contains('del')){
+        // let cnoVal = e.target.dataset.cno;
+        let li = e.target.closest('li');
+        let cnoVal = li.dataset.cno;
+        removeCommentFromServer(cnoVal).then(result =>{
+            if(result == '1'){
+                alert("댓글이 삭제되었습니다.");
+                //화면에 뿌리기
+                spreadCommentList(bnoVal);
+    // bnoVal 는 detail.jsp에 연결한
+    // <script type="text/javascript">
+	// spreadCommentList(bnoVal);
+    // </script>
+            }
+        });
+    }
 });
 
+async function updateCommentToServer(cmtModData){
+    try {
+        const url = "/comment/modify";
+        const config = {
+            method : "put",
+            headers : {
+                'content-type' : 'application/json; charset=utf-8'
+            },
+            body : JSON.stringify(cmtModData)
+        };
+        const resp = await fetch(url,config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    } 
+}
+
+async function removeCommentFromServer(cnoVal){
+    try {
+        const url = "/comment/"+cnoVal;
+        const config = {
+            method : "delete"
+        };
+        const resp = await fetch(url,config);
+        const result = await resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // function spreadCommentList(bno){
 //     getCommentListFromServer(bno).then(result => {
@@ -148,3 +239,4 @@ document.addEventListener('click',(e)=>{
 //         }
 //     });
 // }
+

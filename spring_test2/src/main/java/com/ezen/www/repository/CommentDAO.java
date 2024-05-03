@@ -19,4 +19,8 @@ public interface CommentDAO {
 
 	int getSelectOneBnoTotalCount(int bno);
 
+	int update(CommentVO cvo);
+
+	int delete(int cno);
+
 }

@@ -43,6 +43,11 @@
  	<include refid="search"></include> <!-- 연결할 아이디는 검색라인 search / refid="search" -->
  </select>
  
+ <select id="selectOneBno" resultType="int">
+ 	select max(bno) from board
+ 	where isDel = "N"
+ </select>
+ 
  <!-- 검색 라인 -->
  <sql id="search">
  	<if test="type!=null"> <!-- type이 null이면 검색을 안하겠다는 뜻! -->

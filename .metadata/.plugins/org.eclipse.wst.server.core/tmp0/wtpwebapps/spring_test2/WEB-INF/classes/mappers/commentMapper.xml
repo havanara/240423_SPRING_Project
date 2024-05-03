@@ -28,4 +28,15 @@
   	where bno = #{bno}
   </select>
   
+   <update id="update">
+  	update comment set content = #{content}
+  	where
+  	cno = #{cno}
+  </update>
+  
+  <delete id="delete">
+  	delete from comment
+  	where cno = #{cno}
+  </delete>
+  
   </mapper>

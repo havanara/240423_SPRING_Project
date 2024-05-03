@@ -142,7 +142,7 @@
 <script type="text/javascript" src="/re/js/boardDetailComment.js"></script>
 
 <script type="text/javascript">
-spreadCommentList(bnoVal);
+	spreadCommentList(bnoVal);
 </script>
 
 <jsp:include page="../layout/footer.jsp" />
