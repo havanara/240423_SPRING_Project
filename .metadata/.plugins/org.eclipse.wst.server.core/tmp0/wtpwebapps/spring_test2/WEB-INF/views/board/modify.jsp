@@ -6,8 +6,8 @@
 
 <div class="container-md">
 <h1>Board Modify Page</h1>
-<%-- <c:set value="${bdto.bvo }" var="bvo"></c:set>  --%>
-<form action="/board/modify" method="post">
+<c:set value="${bdto.bvo }" var="bvo"></c:set>
+<form action="/board/modify" method="post" enctype="multipart/form-data">
 	<div class="mb-3">
 	  <label for="n" class="form-label">bno</label>
 	  <input type="text" class="form-control" name="bno" id="n" value="${bvo.bno }" readonly="readonly" placeholder="Bno...">
@@ -30,7 +30,7 @@
 	</div>
 		
 	<!-- 파일 표시 -->
-	<%-- <c:set value="${bdto.flist }" var="flist"></c:set> 
+	<c:set value="${bdto.flist }" var="flist"></c:set> 
 	<div class="mb-3">
 		<ul class="list-group list-group-flush">
 		<!-- 파일 개수만큼 li를 반복하여 파일 표시 타입이 1인 경우만 표시 -->
@@ -39,22 +39,25 @@
 			<c:forEach items="${flist }" var="fvo">
 	  			<li class="list-group-item">
 	  				<c:choose>
-	  					<c:when test="${fvo.file_type > 0}">
+	  					<c:when test="${fvo.fileType > 0}">
 							<div>
-								<img alt="" src="/upload/${fvo.save_dir }/${fvo.uuid}_th_${fvo.file_name}">
+								<img alt="" src="/up/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}">
 							</div>
 	  					</c:when>
 	  					<c:otherwise>
 	  						<div>
-	  							<!-- 파일 타입이 0인 경우 아이콘 모양 하나 가져와서 넣기 -->
+	  							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-zip-fill" viewBox="0 0 16 16">
+									<path d="M5.5 9.438V8.5h1v.938a1 1 0 0 0 .03.243l.4 1.598-.93.62-.93-.62.4-1.598a1 1 0 0 0 .03-.243"/>
+									<path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1m-4-.5V2h-1V1H6v1h1v1H6v1h1v1H6v1h1v1H5.5V6h-1V5h1V4h-1V3zm0 4.5h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.109 0l-.93-.62a1 1 0 0 1-.415-1.074l.4-1.599V8.5a1 1 0 0 1 1-1"/>
+								</svg>
 	  						</div>
 	  					</c:otherwise>
 	  				</c:choose>
 	  				<div>
 	  					<!-- 파일이름, 작성일, size -->
-	  					<div>${fvo.file_name }</div>
-	  					${fvo.reg_date }
-	  					<span class="badge rounded-pill text-bg-dark">${fvo.file_size }Byte</span>
+	  					<div>${fvo.fileName }</div>
+	  					${fvo.regDate }
+	  					<span class="badge rounded-pill text-bg-dark">${fvo.fileSize }Byte</span>
 	  					<button type="button" data-uuid="${fvo.uuid }" class="btn btn-outline-danger btn-sm file-x" >X</button>
 	  				</div>
 				</li>
@@ -72,15 +75,15 @@
 	</div>
 	
 	<!-- 파일 목록 표시라인 -->
-	<div class="mb-3" id="fileZone"></div> --%>
+	<div class="mb-3" id="fileZone"></div>
 	
 	<button type="submit" class="btn btn-warning" id="regBtn">수정</button>
 	<a href="/board/list"><button type="button" class="btn btn-primary">list</button></a>
 </form>
 </div>
 
-<!-- <script type="text/javascript" src="/resources/js/boardModify.js"></script>
-<script type="text/javascript" src="/resources/js/boardRegister.js"></script> -->
+<script type="text/javascript" src="/re/js/boardModify.js"></script>
+<script type="text/javascript" src="/re/js/boardRegister.js"></script>
 
 <jsp:include page="../layout/footer.jsp" />
 

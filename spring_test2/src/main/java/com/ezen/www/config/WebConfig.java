@@ -13,7 +13,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {RootConfig.class}; //새로운 클래스 배열로 만들어서 setting
+		return new Class[] {RootConfig.class, SecurityConfig.class}; //새로운 클래스 배열로 만들어서 setting
 	}
 
 	@Override
