@@ -8,16 +8,16 @@
 <form action="/user/register" method="post">
 
 	<div class="mb-3">
-	  <label for="e" class="form-label">E-Mail</label>
+	  <label for="e" class="form-label">e-mail</label>
 	  <input type="email" class="form-control" name="email" id="e" placeholder="example@test.com...">
 	</div>
 	<div class="mb-3">
-	  <label for="p" class="form-label">PassWord</label>
-	  <input type="password" class="form-control" name="pwd" id="p" placeholder="PassWord...">
+	  <label for="p" class="form-label">passWord</label>
+	  <input type="password" class="form-control" name="pwd" id="p" placeholder="passWord...">
 	</div>
 	<div class="mb-3">
 	  <label for="n" class="form-label">nickName</label>
-	  <input type="text" class="form-control" name="nickname" id="n" placeholder="nickName...">
+	  <input type="text" class="form-control" name="nickName" id="n" placeholder="nickName...">
 	</div>
 
 	<button type="submit" class="btn btn-primary">JOIN</button>

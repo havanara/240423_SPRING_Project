@@ -10,12 +10,12 @@
 	  <input type="text" class="form-control" name="id" id="i" value="${ses.id }" readonly="readonly" placeholder="ID...">
 	</div>
 	<div class="mb-3">
-	  <label for="i" class="form-label">Reg_Date</label>
-	  <input type="text" class="form-control" name="reg_date" id="i" value="${ses.reg_date }" readonly="readonly" placeholder="ID...">
+	  <label for="r" class="form-label">Reg_Date</label>
+	  <input type="text" class="form-control" name="reg_date" id="r" value="${ses.reg_date }" readonly="readonly" placeholder="ID...">
 	</div>
 	<div class="mb-3">
-	  <label for="i" class="form-label">Last_Login</label>
-	  <input type="text" class="form-control" name="last_login" id="i" value="${ses.last_login }" readonly="readonly" placeholder="ID...">
+	  <label for="l" class="form-label">Last_Login</label>
+	  <input type="text" class="form-control" name="last_login" id="l" value="${ses.last_login }" readonly="readonly" placeholder="ID...">
 	</div>
 	<div class="mb-3">
 	  <label for="p" class="form-label">PassWord</label>
