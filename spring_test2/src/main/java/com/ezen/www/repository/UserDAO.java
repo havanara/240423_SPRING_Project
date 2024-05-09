@@ -19,6 +19,13 @@ public interface UserDAO {
 
 	List<UserVO> getList();
 
+	String getPwd(String email);
+
 	void updateModify(UserVO uvo);
+
+	void authDelete(String id);
+	
+	void delete(String id);
+
 
 }

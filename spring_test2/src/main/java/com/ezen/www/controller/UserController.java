@@ -1,10 +1,16 @@
 package com.ezen.www.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.websocket.HandshakeResponse;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,8 +80,40 @@ public class UserController {
 	public void modify() {}
 	
 	@PostMapping("/modify")
-	public String modify(UserVO uvo) {
+	public String modify(UserVO uvo, HttpServletRequest request, HttpServletResponse response) {
 		usv.modify(uvo);
-		return "redirect:/user/logout";
+		logout(request, response);
+		return "redirect:/";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(Principal pr, HttpServletRequest request, HttpServletResponse response) {
+		log.info(">> pr >> {}", pr);
+		String email = pr.getName(); //email
+		usv.delete(email);
+		logout(request, response);
+		return "redirect:/";
+	}
+	
+	//logout 메서드 호출하면 logout 처리 가능
+	private void logout(HttpServletRequest request, HttpServletResponse response) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		new SecurityContextLogoutHandler().logout(request, response, authentication);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

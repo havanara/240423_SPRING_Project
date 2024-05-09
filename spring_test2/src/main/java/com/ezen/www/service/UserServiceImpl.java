@@ -1,13 +1,10 @@
 package com.ezen.www.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,11 +50,10 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void modify(UserVO uvo) {
-		//pw 여부에 따라 변경사항을 나누어서 처리
-		//pw가 없다면 기존값 설정, 있다면 암호화 처리하여 수정
+		//pwd 여부에 따라 변경사항을 나누어서 처리
+		//pwd가 없다면 기존값 설정, 있다면 암호화 처리하여 수정
 		if(uvo.getPwd() == null || uvo.getPwd().length() == 0) {
-			UserVO sesUvo = (UserVO) request.getSession().getAttribute("ses");
-			uvo.setPwd(sesUvo.getPwd());
+			uvo.setPwd(udao.getPwd(uvo.getEmail()));
 		}else {
 			String setPwd = passwordEncoder.encode(uvo.getPwd());
 			uvo.setPwd(setPwd);
@@ -65,5 +61,12 @@ public class UserServiceImpl implements UserService{
 		log.info(">> pw 수정 후 uvo >> {} ", uvo);
 		
 		udao.updateModify(uvo);
+	}
+
+	@Transactional
+	@Override
+	public void delete(String email) {
+		udao.authDelete(email);
+		udao.delete(email);
 	}
 }

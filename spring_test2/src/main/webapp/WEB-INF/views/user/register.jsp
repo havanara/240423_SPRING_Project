@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <jsp:include page="../layout/header.jsp" />
 
@@ -8,8 +9,10 @@
 <form action="/user/register" method="post">
 
 	<div class="mb-3">
-	  <label for="e" class="form-label">e-mail</label>
-	  <input type="email" class="form-control" name="email" id="e" placeholder="example@test.com...">
+	  <label for="e" id="emailLabel" class="form-label">e-mail</label>
+	  <input type="email" class="form-control" name="email" id="e" placeholder="example@test.com...">	  
+	  <button type="submit" id="doubleCheck" class="btn btn-success">중복확인</button>
+	
 	</div>
 	<div class="mb-3">
 	  <label for="p" class="form-label">passWord</label>
@@ -24,5 +27,9 @@
 </form>
 
 </div>
+
+<script type="text/javascript" src="resources/js/userRegister.js">
+
+</script>
 
 <jsp:include page="../layout/footer.jsp" />

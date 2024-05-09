@@ -14,5 +14,7 @@ public interface UserService {
 
 	void modify(UserVO uvo);
 
+	void delete(String email);
+
 	
 }

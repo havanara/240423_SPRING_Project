@@ -34,10 +34,24 @@
   	select * from user
   </select>
   
+  <select id="getPwd" resultType="String">
+  	select pwd from user
+  	where email = #{email}
+  </select>
+  
   <update id="updateModify">
-  	update user set
-  	pwd = #{pwd}, email = #{email}
-  	where nick_name = #{nickName}
+  	update user set pwd = #{pwd}, nick_name = #{nickName}
+  	where email = #{email}
   </update>
+  
+  <delete id="authDelete">
+  	delete from auth_user
+  	where email = #{email}
+  </delete>
+  
+  <delete id="delete">
+  	delete from user
+  	where email = #{email}
+  </delete>
   
   </mapper>
