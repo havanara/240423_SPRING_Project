@@ -36,6 +36,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardDTO getDetail(int bno) {
+		//readCount 증가
+		bdao.updateReadCount(bno);
 		// bvo, flist 묶어서 DTO return
 		BoardVO bvo = bdao.getDetail(bno);
 		List<FileVO> flist = fdao.getList(bno); 

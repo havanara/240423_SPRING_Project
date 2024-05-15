@@ -27,7 +27,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-			<location>D:\_myProject\_java\_fileUpload</location>
+			<location>C:\Users\nara\Desktop\lee\_myProject\_java\_fileUpload</location>
 			<max-file-size>20971520</max-file-size> <!-- 최대사이즈 20mb -> 1024*1024*20 -->
 			<max-request-size>41943040</max-request-size> <!-- 객체의 최대 사이즈 max-file-size * 2 -->
 			<file-size-threshold>20971520</file-size-threshold>

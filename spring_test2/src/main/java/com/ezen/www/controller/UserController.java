@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.HandshakeResponse;
+//import javax.websocket.HandshakeResponse;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -100,20 +100,6 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		new SecurityContextLogoutHandler().logout(request, response, authentication);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }

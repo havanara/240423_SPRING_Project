@@ -48,6 +48,12 @@
  	where isDel = "N"
  </select>
  
+ <update id="updateReadCount">
+ 	update board set
+ 	read_count = read_count+1
+ 	where bno = #{bno}
+ </update>
+ 
  <!-- 검색 라인 -->
  <sql id="search">
  	<if test="type!=null"> <!-- type이 null이면 검색을 안하겠다는 뜻! -->
