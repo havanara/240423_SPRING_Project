@@ -6,8 +6,8 @@
   <mapper namespace="com.ezen.www.repository.BoardDAO">
   
  <insert id="insert">
-	insert into board(title, writer, content)
-	values (#{title}, #{writer}, #{content})
+	insert into board(title, writer, content, has_file)
+	values (#{title}, #{writer}, #{content}, #{hasFile})
  </insert>
  
  <select id="getList" resultType="com.ezen.www.domain.BoardVO">
@@ -29,7 +29,12 @@
  </select>
  
  <update id="update">
- 	update board set title=#{title}, content=#{content} where bno = #{bno}
+ 	update board set
+ 	title=#{title},
+ 	content=#{content},
+ 	read_count = read_count-2,
+	has_file = #{hasFile}
+ 	where bno = #{bno}
  </update>
  
  <update id="delete">
@@ -52,6 +57,20 @@
  	update board set
  	read_count = read_count+1
  	where bno = #{bno}
+ </update>
+ 
+ <update id="cmtCountUpdate">
+  	update board
+	set cmt_qty = (
+	select count(bno) from comment
+	where bno = board.bno);
+ </update>
+  
+ <update id="fileCountUpdate">
+	update board
+	set has_file = (
+	select count(bno) from file
+	where bno = board.bno);
  </update>
  
  <!-- 검색 라인 -->

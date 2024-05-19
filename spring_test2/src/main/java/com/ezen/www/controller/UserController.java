@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ezen.www.domain.BoardVO;
-import com.ezen.www.domain.PagingVO;
 import com.ezen.www.domain.UserVO;
-import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,8 +34,15 @@ public class UserController {
 	private final BCryptPasswordEncoder bcEncoder;
 	
 	//컨트롤러 맵핑이랑 jsp 경로가 같으면 void 가능
+//	@GetMapping("/register")
+//	public void register() {
+//	}
+	
 	@GetMapping("/register")
-	public void register() {}
+	public void register(Model m) {
+		List<UserVO> list = usv.getList();
+		m.addAttribute("list", list);
+	}
 	
 	@PostMapping("/register")
 	public String register(UserVO uvo) {
@@ -49,8 +53,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/login")
-	public void login() {
-		
+	public void login() {	
 	}
 	
 	@PostMapping("/login")
@@ -62,8 +65,7 @@ public class UserController {
 		re.addAttribute("email", request.getAttribute("email"));
 		re.addAttribute("errMsg", request.getAttribute("errMsg"));
 		
-		return "redirect:/user/login";
-		
+		return "redirect:/user/login";	
 	}
 	
 	@GetMapping("/list")
@@ -77,7 +79,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/modify")
-	public void modify() {}
+	public void modify() {
+	}
 	
 	@PostMapping("/modify")
 	public String modify(UserVO uvo, HttpServletRequest request, HttpServletResponse response) {

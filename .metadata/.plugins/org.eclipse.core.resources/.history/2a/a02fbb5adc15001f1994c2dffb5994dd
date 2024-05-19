@@ -1,0 +1,10 @@
+document.getElementById('doubleCheck').addEventListener('click',()=>{
+    const userJoinEmail = document.getElementById('e').value;
+
+	if (userArray.includes(userJoinEmail)) {
+		alert("사용 불가능");
+		return;
+	} else {
+		alert("사용 가능");
+	}
+});

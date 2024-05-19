@@ -1,0 +1,16 @@
+document.getElementById('doubleCheck').addEventListener('click',()=>{
+    const userJoinEmail = document.getElementById('e').value;
+
+	for(var i=0; i<userArray.length; i++){
+	if (userArray[i] != null && userArray[i].length >0 && userArray[i] != "") {
+		if(userJoinEmail == userArray[i]){
+        alert("이미 사용중인 이메일입니다.");
+        return;
+     }else{
+        alert("사용할 수 있는 이메일입니다.");
+        return;
+     }
+	}
+    
+     }
+});

@@ -6,12 +6,13 @@
 
 <div class="container-md">
 <h1>User Join Page</h1>
+
 <form action="/user/register" method="post">
 
 	<div class="mb-3">
-	  <label for="e" id="emailLabel" class="form-label">e-mail</label>
-	  <input type="email" class="form-control" name="email" id="e" placeholder="example@test.com...">	  
-	  <button type="submit" id="doubleCheck" class="btn btn-success">중복확인</button>
+	  <label for="e" class="form-label">e-mail</label>
+	  <input type="email" class="form-control" name="email" id="e" placeholder="example@test.com..." value="">	  
+	  <button type="button" id="doubleCheck" class="btn btn-success">중복확인</button>
 	
 	</div>
 	<div class="mb-3">
@@ -28,8 +29,17 @@
 
 </div>
 
-<script type="text/javascript" src="resources/js/userRegister.js">
+<script type="text/javascript">
+const userEmailVal = `<c:out value = "${list}"/>`;
+console.log(userEmailVal);
 
+var userArray = new Array();
+<c:forEach items="${list}" var="i">
+	userArray.push("${i.email}");
+</c:forEach>
+console.log(userArray);
 </script>
+
+<script type="text/javascript" src="/re/js/userRegister.js"></script>
 
 <jsp:include page="../layout/footer.jsp" />

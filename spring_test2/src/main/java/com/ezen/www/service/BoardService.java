@@ -25,6 +25,8 @@ public interface BoardService {
 
 	int removeFile(String uuid);
 
-	int update(BoardDTO boardDTO);
+	void update(BoardDTO bdto);
+
+	void cmtFileUpdate();
 	
 }

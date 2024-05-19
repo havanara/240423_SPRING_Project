@@ -1,0 +1,34 @@
+document.getElementById('doubleCheck').addEventListener('click',()=>{
+    const userJoinEmail = document.getElementById('e').value;
+    // const userEmailVal = userEmailVal;
+
+    if(userJoinEmail == userEmailVal){
+        alert("이미 사용중인 이메일입니다.");
+     }else{
+        alert("사용할 수 있는 이메일입니다.");
+     }
+
+    // emailDoubleCheck(userJoinEmail, userEmailVal);
+
+    
+});
+
+// async function emailDoubleCheck(userJoinEmail, userEmailVal){
+//     try {
+//         const url = "/user/register";
+//         const config = {
+//             method : "post",
+//             headers : {
+//                 'content-type' : 'application/json; charset=utf-8'
+//             },
+//             body : JSON.stringify(cmtData)
+//         };
+
+//         const resp = await fetch(url,config);
+//         const result = await resp.text();
+//         return result;
+//     } catch (error) {
+//         console.log(error);
+//     } 
+
+// }

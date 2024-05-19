@@ -72,3 +72,6 @@ update board
 set has_file = (
 select count(bno) from file
 where bno = board.bno);
+
+-- spring_test2
+insert into auth_user values ('kim@naver.com', 'ROLE_ADMIN');

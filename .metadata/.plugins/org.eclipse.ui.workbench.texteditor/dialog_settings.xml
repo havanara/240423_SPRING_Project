@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="count"/>
+		<item key="selection" value="1"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="1"/>
+			<item value="uvo"/>
+			<item value="u"/>
+			<item value="cvo"/>
+			<item value="_f"/>
+			<item value="cmtFile"/>
+			<item value="fileCount"/>
+			<item value="has_file"/>
+			<item value="has"/>
 			<item value="Count"/>
 			<item value="count"/>
 			<item value="read"/>
 			<item value="HandshakeResponse"/>
 			<item value="file"/>
 			<item value="ph"/>
-			<item value="login"/>
-			<item value="date"/>
-			<item value=" "/>
-			<item value="SuccessHandler"/>
-			<item value="&gt;&gt; FileSweeper Running"/>
-			<item value="&gt;&gt;&gt;&gt;"/>
-			<item value="fileSweeper"/>
-			<item value="cmtDelBtn"/>
-			<item value="cmtModBtn"/>
 		</list>
 		<list key="replacehistory">
 		</list>
