@@ -76,23 +76,23 @@
 
 ### 회원가입
 
-![회원가입](https://github.com/havanara/havanara/assets/166004719/b51b9799-f39a-4ec9-9a0a-cc607c590dc8)
+![회원가입](https://github.com/havanara/240423_SPRING_Project/assets/166004719/301ff3f4-5182-492e-8409-3a884918cac2)
 
 ---
 
 ### 로그인, 로그아웃
 
-![로그인 성공(로그인 버튼x)](https://github.com/havanara/havanara/assets/166004719/bdd8e5a1-641c-43af-aea2-b23ff247eca5)
+![로그인 성공(로그인 버튼x)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/71275f73-b06e-46d2-a989-f543be735672)
 
-![로그인 실패](https://github.com/havanara/havanara/assets/166004719/b865d293-d6e7-4c25-976f-82f01bc47fed)
+![로그인 실패](https://github.com/havanara/240423_SPRING_Project/assets/166004719/3c7a8982-caaf-4429-b2bf-cf0e8a4cc987)
 
-![로그인 화면(로그아웃 버튼x)](https://github.com/havanara/havanara/assets/166004719/8fd584cd-02b3-4d14-8499-439622ea7682)
+![로그인 화면(로그아웃 버튼x)](https://github.com/havanara/240423_SPRING_Project/assets/166004719/b711599f-86b6-4274-a95b-d1aa7b349fb6)
 
 ---
 
 ### 마이페이지 수정
 
-![마이페이지 수정](https://github.com/havanara/havanara/assets/166004719/5606874c-c368-4479-bae3-5e97c27e4df6)
+![마이페이지 수정](https://github.com/havanara/240423_SPRING_Project/assets/166004719/6894d689-77ec-4228-b054-1195aff9057d)
 
 ---
 
@@ -111,9 +111,9 @@
 
 ### 댓글 작성, 수정, 삭제
 
-![댓글 등록](https://github.com/havanara/havanara/assets/166004719/f41342a9-6e8e-41fd-a51b-13571196df8d)
+![댓글 등록](https://github.com/havanara/240423_SPRING_Project/assets/166004719/f6619cfc-ce8f-4c26-a13c-91a6579890ba)
 
-![댓글 수정](https://github.com/havanara/havanara/assets/166004719/526adcba-586d-4ac1-ab10-9f265711178b)
+![댓글 수정](https://github.com/havanara/240423_SPRING_Project/assets/166004719/1016edc8-a528-41ce-9a90-4ee45eb1e2a7)
 
 ---
 
